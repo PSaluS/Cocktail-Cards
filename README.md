@@ -1,6 +1,6 @@
 # Cocktail Cards Project
 
-## Project page: https://psalus.github.io/
+## Project page: https://psalus.github.io/Cocktail-Cards/
 
 #### about the project:
 
