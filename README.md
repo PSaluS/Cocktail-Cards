@@ -26,6 +26,8 @@ The project was created for self-development and demonstration purposes.
 
 ##### - search/filter mechanism
 
+##### - responsibility for mobile
+
 ##### - tests for project
 
 ##### - dynamic loading data

@@ -37,9 +37,6 @@ function App(): React.ReactElement {
             <Route path="/Cocktail-Cards/" exact>
               <Cocktails />
             </Route>
-            <Route path="/" exact>
-              <Cocktails />
-            </Route>
           </Switch>
         </ApolloProvider>
       </ThemeProvider>
