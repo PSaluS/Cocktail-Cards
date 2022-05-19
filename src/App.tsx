@@ -19,7 +19,7 @@ function App(): React.ReactElement {
         <ApolloProvider client={apolloClient}>
           <GlobalStyle />
           <Title>
-            <Link to="/">
+            <Link to="/Cocktail-Cards">
               <Logo src={CCLogo} alt="" />
               Cocktail Cards
             </Link>
@@ -31,7 +31,7 @@ function App(): React.ReactElement {
             <Route path="/add" exact>
               <AddCocktail />
             </Route>
-            <Route path="/" exact>
+            <Route path="/Cocktail-Cards" exact>
               <Cocktails />
             </Route>
           </Switch>
