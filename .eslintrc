@@ -1,0 +1,29 @@
+{
+  "extends": ["airbnb", "prettier"],
+  "env": {
+    "jest": true
+  },
+  "globals": {
+    "document": true
+  },
+  "rules": {
+    "import/no-unresolved": 1,
+    "react/jsx-filename-extension": [
+      1,
+      {
+        "extensions": [".tsx"]
+      }
+    ],
+    "import/extensions": "off",
+    "react/jsx-props-no-spreading": "off",
+    "no-param-reassign": 0
+  },
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "paths": ["./src"],
+        "extensions": [".js", ".jsx", ".ts", ".tsx", "gql", "graphql"]
+      }
+    }
+  }
+}

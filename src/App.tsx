@@ -1,25 +1,43 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Link, Switch, Route } from 'react-router-dom';
+import { ApolloProvider } from '@apollo/client';
+// import FlexSpace from 'components/organisms/cardsSpace/cardsSpace.styles';
+import Title from 'components/atoms/title';
+import apolloClient from 'API/apolloClient';
+import { GlobalStyle, Theme } from 'theme';
+import Cocktails from 'views/cocktails';
+import AddCocktail from 'views/addCocktail';
+import { ThemeProvider } from 'styled-components';
+import Logo from 'components/atoms/logo';
+import CCLogo from 'img/CClogo_Tall.svg';
+import AddLink from 'components/atoms/addLink';
 
-function App() {
+function App(): React.ReactElement {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <ThemeProvider theme={Theme}>
+        <ApolloProvider client={apolloClient}>
+          <GlobalStyle />
+          <Title>
+            <Link to="/">
+              <Logo src={CCLogo} alt="" />
+              Cocktail Cards
+            </Link>
+          </Title>
+          <Link to="/add">
+            <AddLink>+</AddLink>
+          </Link>
+          <Switch>
+            <Route path="/add" exact>
+              <AddCocktail />
+            </Route>
+            <Route path="/" exact>
+              <Cocktails />
+            </Route>
+          </Switch>
+        </ApolloProvider>
+      </ThemeProvider>
+    </Router>
   );
 }
 
