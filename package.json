@@ -1,7 +1,7 @@
 {
   "name": "cocktail_cards",
   "version": "1.0.0",
-  "private": true,
+  "private": false,
   "homepage": "https://PSaluS.github.io/Cocktail-Cards/",
   "dependencies": {
     "@apollo/client": "^3.6.4",
