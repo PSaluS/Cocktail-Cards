@@ -8,14 +8,13 @@ const FlexSpace = styled.div<Ifocus>`
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  transition: width 0.25s ease-in-out;
   width: ${({ focus }: Ifocus) =>
-    focus !== null ? `${window.innerWidth - 310}px` : window.innerWidth};
-  transition: 0.25s ease-in-out;
+    focus !== null ? `${window.innerWidth - 310}px` : `${window.innerWidth}px`};
   position: relative;
   max-height: ${window.innerHeight - 85};
   height: ${window.innerHeight - 85};
   overflow: auto;
-  transform: ${({ focus }: Ifocus) => (focus !== null ? 'translateX(300px)' : '')};
 
   &::-webkit-scrollbar {
     width: 5px;

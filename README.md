@@ -42,7 +42,7 @@ The project was created for self-development and demonstration purposes.
 
 ##### E-mail: PSalusDev@protonmail.com
 
-##### Linkedin:
+##### Linkedin: www.linkedin.com/in/paweł-salus-93437223b
 
 ---
 

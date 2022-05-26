@@ -5,24 +5,6 @@ import emptyCocktail from 'API/Templates';
 import Cocktail from 'API/types';
 import CardsSpace from 'components/organisms/cardsSpace';
 import ContentCard from 'components/molecules/contentCard';
-// import SearchSpace from 'components/organisms/searchSpace';
-
-// const query = gql`
-//   {
-//     allCocktails {
-//       id
-//       title
-//       elements
-//       ice
-//       build
-//       img {
-//         url
-//       }
-//       content
-//       author
-//     }
-//   }
-// `;
 
 const query = gql`
   {
@@ -45,8 +27,8 @@ const Main = styled.div`
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
-  /* display: inline; */
   position: relative;
+  justify-content: right;
   width: 100%;
   padding: 0;
   margin: 0;
@@ -81,7 +63,6 @@ const cocktails = (): ReactElement => {
           <CardsSpace data={data.cocktailCardsID} setFocus={setFocusCard} isFocus={focusCard.id} />
         ) : null}
         {(error !== undefined && !loading) ?? <p>Something get wrong.</p>}
-        {/* <SearchSpace /> */}
       </Main>
     </>
   );

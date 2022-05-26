@@ -42,8 +42,6 @@ interface propsFocus {
 }
 
 export const BackSpace = styled.div`
-  /* width: ${({ focus }: propsFocus) => (focus.id !== null ? '300px' : '0px')};
-  min-width: ${({ focus }: propsFocus) => (focus.id !== null ? '300px' : '0px')}; */
   width: 300px;
   transform: translateX(${({ focus }: propsFocus) => (focus.id !== null ? '0px' : '-300px')});
   transition: transform 0.25s ease-in-out;
@@ -52,12 +50,8 @@ export const BackSpace = styled.div`
   box-shadow: 3px 1px 2px rgba(0, 0, 0, 0.5);
   margin: 5px 0px;
   background-color: white;
-  /* position: absolute; */
-  position: ${({ isAdd }: propsFocus) => (isAdd ? 'flex' : 'absolute')};
-  /* position: flex; */
-  top: 1px;
-  /* position: ${({ focus }: propsFocus) => (focus.id !== null ? 'stick' : 'absolute')}; */
-  /* top: ${({ focus }: propsFocus) => (focus.id !== null ? '1px' : '85px')}; */
+  position: ${({ isAdd }: propsFocus) => (isAdd ? 'flex' : 'fixed')};
+  top: ${({ isAdd }: propsFocus) => (isAdd ? '1px' : '81px')};
   left: 0px;
   display: flex;
   flex-wrap: wrap;
