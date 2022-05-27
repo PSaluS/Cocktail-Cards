@@ -10,7 +10,18 @@ interface INoAlcoholsForm {
   data: NoAlcohols[];
   setData: (newData: NoAlcohols[]) => void;
 }
-
+const checkFilledNoAlcohols = (data: NoAlcohols[]) => {
+  let filed: boolean = true;
+  data.forEach((element) => {
+    if (
+      element.noAlcoholType === '' ||
+      element.noAlcoholVolume <= 0 ||
+      element.noAlcoholUnit === ''
+    )
+      filed = false;
+  });
+  return filed;
+};
 const FormRaw = styled.div`
   display: flex;
   margin: auto;
@@ -114,7 +125,9 @@ const AlcoholsForm = ({ data, setData }: INoAlcoholsForm) => (
       name="addNoAlcohol"
       type="button"
       onClick={() => {
-        setData([...data, emptyNoAlcohols]);
+        if (checkFilledNoAlcohols(data)) {
+          setData([...data, emptyNoAlcohols]);
+        }
       }}
     >
       Add Element

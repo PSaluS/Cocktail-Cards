@@ -11,6 +11,13 @@ interface IAlcoholsForm {
   setData: (newData: Alcohols[]) => void;
 }
 
+const checkFilledAlcohols = (data: Alcohols[]) => {
+  let filed: boolean = true;
+  data.forEach((element) => {
+    if (element.alcoholType === '' || element.alcoholVolume <= 0) filed = false;
+  });
+  return filed;
+};
 const MLStyled = styled.div`
   transform: translateY(12px);
 `;
@@ -85,7 +92,9 @@ const AlcoholsForm = ({ data, setData }: IAlcoholsForm) => (
       name="addAlcohol"
       type="button"
       onClick={() => {
-        setData([...data, emptyAlcohols]);
+        if (checkFilledAlcohols(data)) {
+          setData([...data, emptyAlcohols]);
+        }
       }}
     >
       Add alcohol
