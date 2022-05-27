@@ -1,21 +1,21 @@
 {
   "files": {
-    "main.js": "/Cocktail-Cards/static/js/main.67c57ead.chunk.js",
-    "main.js.map": "/Cocktail-Cards/static/js/main.67c57ead.chunk.js.map",
+    "main.js": "/Cocktail-Cards/static/js/main.44f034a0.chunk.js",
+    "main.js.map": "/Cocktail-Cards/static/js/main.44f034a0.chunk.js.map",
     "runtime-main.js": "/Cocktail-Cards/static/js/runtime-main.96ee2eea.js",
     "runtime-main.js.map": "/Cocktail-Cards/static/js/runtime-main.96ee2eea.js.map",
-    "static/js/2.a19cb925.chunk.js": "/Cocktail-Cards/static/js/2.a19cb925.chunk.js",
-    "static/js/2.a19cb925.chunk.js.map": "/Cocktail-Cards/static/js/2.a19cb925.chunk.js.map",
+    "static/js/2.21f6867e.chunk.js": "/Cocktail-Cards/static/js/2.21f6867e.chunk.js",
+    "static/js/2.21f6867e.chunk.js.map": "/Cocktail-Cards/static/js/2.21f6867e.chunk.js.map",
     "static/js/3.4e721852.chunk.js": "/Cocktail-Cards/static/js/3.4e721852.chunk.js",
     "static/js/3.4e721852.chunk.js.map": "/Cocktail-Cards/static/js/3.4e721852.chunk.js.map",
     "index.html": "/Cocktail-Cards/index.html",
-    "static/js/2.a19cb925.chunk.js.LICENSE.txt": "/Cocktail-Cards/static/js/2.a19cb925.chunk.js.LICENSE.txt",
+    "static/js/2.21f6867e.chunk.js.LICENSE.txt": "/Cocktail-Cards/static/js/2.21f6867e.chunk.js.LICENSE.txt",
     "static/media/CClogo_Tall.bc43070b.svg": "/Cocktail-Cards/static/media/CClogo_Tall.bc43070b.svg",
     "static/media/crushed.9fe04997.png": "/Cocktail-Cards/static/media/crushed.9fe04997.png"
   },
   "entrypoints": [
     "static/js/runtime-main.96ee2eea.js",
-    "static/js/2.a19cb925.chunk.js",
-    "static/js/main.67c57ead.chunk.js"
+    "static/js/2.21f6867e.chunk.js",
+    "static/js/main.44f034a0.chunk.js"
   ]
 }

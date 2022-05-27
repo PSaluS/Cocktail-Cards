@@ -1,27 +1,11 @@
 import React, { ReactElement, useState } from 'react';
 import styled from 'styled-components';
-import { useQuery, gql } from '@apollo/client';
+import { useQuery } from '@apollo/client';
+import { QUERY } from 'API/GraphQL';
 import emptyCocktail from 'API/Templates';
 import Cocktail from 'API/types';
 import CardsSpace from 'components/organisms/cardsSpace';
 import ContentCard from 'components/molecules/contentCard';
-
-const query = gql`
-  {
-    cocktailCardsID {
-      author
-      build
-      content
-      elements
-      ice
-      id
-      img {
-        url
-      }
-      title
-    }
-  }
-`;
 
 const Main = styled.div`
   display: flex;
@@ -48,7 +32,7 @@ const Main = styled.div`
 
 const cocktails = (): ReactElement => {
   const [focusCard, setFocusCard] = useState<Cocktail>(emptyCocktail);
-  const { loading, error, data } = useQuery(query);
+  const { loading, error, data } = useQuery(QUERY);
   return (
     <>
       <Main>

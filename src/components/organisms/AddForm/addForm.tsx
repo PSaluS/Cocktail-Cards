@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { gql, useQuery, useMutation } from '@apollo/client';
+import { useQuery, useMutation } from '@apollo/client';
+import { ADD_COCKTAIL, ID_QUERY } from 'API/GraphQL';
 import AddFormRow from 'components/atoms/addFormRow';
 import { Ice, Build, Alcohols, NoAlcohols } from 'API/types';
 import { SubbButton } from 'components/atoms/addElementButton/addElementButton';
@@ -15,33 +16,6 @@ import Card from 'components/molecules/card';
 import ContentCard from 'components/molecules/contentCard';
 import StyledForm from './addForm.styles';
 import StyledCard from './cardForm.styled';
-
-const ADD_COCKTAIL = gql`
-  mutation ADD_Cocktail(
-    $title: String!
-    $elements: Json!
-    $content: String!
-    $imgId: ID!
-    $build: Build!
-    $ice: Ice!
-    $author: String
-  ) {
-    createCocktailCards(
-      data: {
-        title: $title
-        elements: $elements
-        content: $content
-        img: { connect: { id: $imgId } }
-        build: $build
-        ice: $ice
-        author: $author
-      }
-    ) {
-      id
-      title
-    }
-  }
-`;
 
 interface inicialValuesTypes {
   title: string;
@@ -60,6 +34,24 @@ interface inicialValuesTypes {
   content: string;
   author: string;
 }
+
+const inicialValues: inicialValuesTypes = {
+  title: '',
+  elements: {
+    alcohols: [],
+    noAlcohols: [],
+  },
+  build: 'building',
+  ice: 'cubes',
+  img: {
+    link: '',
+    name: '',
+    data: null,
+    id: '',
+  },
+  content: '',
+  author: '',
+};
 
 const ff = (data: File | null) => {
   if (data !== null) {
@@ -94,31 +86,7 @@ const ErrField = styled.div`
 
 const AddForm = () => {
   const [errState, setErrState] = useState<String[]>(['']);
-  const [formState, setformState] = useState<inicialValuesTypes>({
-    title: '',
-    elements: {
-      alcohols: [],
-      noAlcohols: [],
-    },
-    build: 'building',
-    ice: 'cubes',
-    img: {
-      link: '',
-      name: '',
-      data: null,
-      id: '',
-    },
-    content: '',
-    author: '',
-  });
-
-  const ID_QUERY = gql`
-    query IdQuery($fileName: String!, $fileSize: Float) {
-      assets(where: { fileName: $fileName, size: $fileSize }, stage: DRAFT) {
-        id
-      }
-    }
-  `;
+  const [formState, setformState] = useState<inicialValuesTypes>(inicialValues);
 
   const [addCocktail] = useMutation(ADD_COCKTAIL);
 
@@ -176,14 +144,30 @@ const AddForm = () => {
       <StyledForm
         onSubmit={async (e) => {
           e.preventDefault();
-          // validate here
           setErrState([]);
           const errBuff = [];
+          let emptyAElement: boolean = false;
+          let emptyNElement: boolean = false;
+
+          formState.elements.alcohols.forEach((element) => {
+            if (element.alcoholType === '' || element.alcoholVolume <= 0) emptyAElement = true;
+          });
+          formState.elements.noAlcohols.forEach((element) => {
+            if (
+              element.noAlcoholType === '' ||
+              element.noAlcoholVolume <= 0 ||
+              element.noAlcoholUnit === ''
+            )
+              emptyNElement = true;
+          });
 
           if (formState.title === '') errBuff.push('Cocktail must have name');
 
           if (formState.title.length <= 3 || formState.title.length >= 30)
             errBuff.push(`Cocktail's name length must be between 2 and 30 char`);
+
+          if (emptyAElement || emptyNElement)
+            errBuff.push('element incomplete, complete all elements before send Cocktail');
 
           if (formState.elements.alcohols.length + formState.elements.noAlcohols.length < 2)
             errBuff.push('Cocktail must have 2 elements');
@@ -221,6 +205,7 @@ const AddForm = () => {
                       author: formState.author,
                     },
                   });
+                  setformState(inicialValues);
                 }
               }
             }

@@ -20,7 +20,7 @@ const formDropezone = (props: IDropeZone) => {
   return (
     <DropezoneStyled bImg={props.img} {...getRootProps()}>
       <input {...getInputProps()} />
-      {props.img ? null : <p>Your Cocktail photo.</p>}
+      {props.img ? null : <p>Add photo yours Cocktail</p>}
     </DropezoneStyled>
   );
 };
