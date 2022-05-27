@@ -45,7 +45,7 @@ export const Bar = styled.div`
   top: 90%;
   position: relative;
   ${CardStyle}:hover & {
-    animation: ${slizeAnim} 0.2s ease-in-out forwards alternate;
+    animation: ${slizeAnim} 0.2s ease-in-out forwards;
   }
 `;
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Link, Switch, Route } from 'react-router-dom';
+import { BrowserRouter as Router, NavLink, Switch, Route } from 'react-router-dom';
 import { ApolloProvider } from '@apollo/client';
 // import FlexSpace from 'components/organisms/cardsSpace/cardsSpace.styles';
 import Title from 'components/atoms/title';
@@ -19,14 +19,20 @@ function App(): React.ReactElement {
         <ApolloProvider client={apolloClient}>
           <GlobalStyle />
           <Title>
-            <Link to="/Cocktail-Cards">
+            <NavLink activeClassName="activ" to="/Cocktail-Cards">
               <Logo src={CCLogo} alt="" />
               Cocktail Cards
-            </Link>
+            </NavLink>
           </Title>
-          <Link to="/add">
+          <NavLink
+            activeClassName="activ"
+            to="/add"
+            style={(isActive) => ({
+              opacity: isActive ? '0' : '1',
+            })}
+          >
             <AddLink>+</AddLink>
-          </Link>
+          </NavLink>
           <Switch>
             <Route path="/add" exact>
               <AddCocktail />
