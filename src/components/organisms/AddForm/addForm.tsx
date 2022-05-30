@@ -14,8 +14,7 @@ import AlkoholsForm from 'components/molecules/alcoholsForm';
 import NoAlkoholsForm from 'components/molecules/elementsForm';
 import Card from 'components/molecules/card';
 import ContentCard from 'components/molecules/contentCard';
-import StyledForm from './addForm.styles';
-import StyledCard from './cardForm.styled';
+import StyledForm, { StyledCard } from './addForm.styles';
 
 interface inicialValuesTypes {
   title: string;
@@ -86,6 +85,7 @@ const ErrField = styled.div`
 
 const AddForm = () => {
   const [errState, setErrState] = useState<String[]>(['']);
+  const [buttText, setButtTest] = useState<String>('Send');
   const [formState, setformState] = useState<inicialValuesTypes>(inicialValues);
 
   const [addCocktail] = useMutation(ADD_COCKTAIL);
@@ -148,6 +148,7 @@ const AddForm = () => {
             .getElementsByClassName('SubbButton')
             .item(0)
             ?.setAttribute('disabled', 'true');
+          setButtTest('In progres...');
           setErrState([]);
           const errBuff = [];
           let emptyAElement: boolean = false;
@@ -214,7 +215,8 @@ const AddForm = () => {
               }
             }
           }
-          e.currentTarget.getElementsByClassName('SubbButton').item(0)?.removeAttribute('disabled');
+          setButtTest('Send');
+          document.getElementById('addSubbmitButton')?.removeAttribute('disabled');
           return null;
         }}
       >
@@ -225,7 +227,7 @@ const AddForm = () => {
             ))}
           </ErrField>
         ) : (
-          <SuccesField>
+          <SuccesField className="succesField">
             <p>Done, your Cocktail has been added.</p>
             <p>After verification, it will be displayed on the website.</p>
           </SuccesField>
@@ -310,7 +312,7 @@ const AddForm = () => {
           name="addSubbmitButton"
           className="SubbButton"
         >
-          Send
+          {buttText}
         </SubbButton>
         {errState.length > 0 ? (
           <ErrField>
@@ -319,7 +321,7 @@ const AddForm = () => {
             ))}
           </ErrField>
         ) : (
-          <SuccesField>
+          <SuccesField className="succesField">
             <p>Done, your Cocktail has been added.</p>
             <p>After verification, it will be displayed on the website.</p>
           </SuccesField>

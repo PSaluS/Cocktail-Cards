@@ -38,7 +38,7 @@ const emptyNoAlcohols: NoAlcohols = {
 /* eslint-disable no-param-reassign */
 const AlcoholsForm = ({ data, setData }: INoAlcoholsForm) => (
   <>
-    <P black>No Alcohols Elements:</P>
+    <P black>Non-alcohols ingredients:</P>
     {data.map((element, index) => (
       <>
         <FormRaw>

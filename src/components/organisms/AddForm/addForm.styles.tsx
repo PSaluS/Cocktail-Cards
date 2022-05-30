@@ -20,4 +20,8 @@ const styledForm = styled.form`
   }
 `;
 
+export const StyledCard = styled.div`
+  width: 500px;
+`;
+
 export default styledForm;
