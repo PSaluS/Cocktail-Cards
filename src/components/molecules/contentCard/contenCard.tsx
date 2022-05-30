@@ -47,7 +47,9 @@ const contentCard = ({ focus, closeFunction, isAdd }: PropsInterface) => (
     </IconsSpaces>
     <CraftSpace>{focus.content}</CraftSpace>
     <br />
-    {focus.author !== null ? <AuthorSpace>Author: {focus.author}</AuthorSpace> : null}
+    {focus.author !== null && focus.author !== '' ? (
+      <AuthorSpace>Author: {focus.author}</AuthorSpace>
+    ) : null}
   </BackSpace>
 );
 

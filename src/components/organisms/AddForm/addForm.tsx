@@ -144,6 +144,10 @@ const AddForm = () => {
       <StyledForm
         onSubmit={async (e) => {
           e.preventDefault();
+          e.currentTarget
+            .getElementsByClassName('SubbButton')
+            .item(0)
+            ?.setAttribute('disabled', 'true');
           setErrState([]);
           const errBuff = [];
           let emptyAElement: boolean = false;
@@ -210,6 +214,7 @@ const AddForm = () => {
               }
             }
           }
+          e.currentTarget.getElementsByClassName('SubbButton').item(0)?.removeAttribute('disabled');
           return null;
         }}
       >
@@ -299,7 +304,14 @@ const AddForm = () => {
             onChange={cmmonSetState}
           />
         </AddFormRow>
-        <SubbButton type="submit">Send</SubbButton>
+        <SubbButton
+          type="submit"
+          id="addSubbmitButton"
+          name="addSubbmitButton"
+          className="SubbButton"
+        >
+          Send
+        </SubbButton>
         {errState.length > 0 ? (
           <ErrField>
             {errState.map((element) => (

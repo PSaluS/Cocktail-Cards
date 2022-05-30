@@ -32,6 +32,8 @@ The project was created for self-development and demonstration purposes.
 
 ##### - dynamic loading data
 
+##### - rating and comments
+
 ##### - dark theme
 
 ##### - multi language support
