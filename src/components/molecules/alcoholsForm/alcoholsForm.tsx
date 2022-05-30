@@ -11,6 +11,8 @@ interface IAlcoholsForm {
   setData: (newData: Alcohols[]) => void;
 }
 
+export const setNo0 = (x: number): number | string => (x > 0 ? x : '');
+
 const checkFilledAlcohols = (data: Alcohols[]) => {
   let filed: boolean = true;
   data.forEach((element) => {
@@ -63,7 +65,7 @@ const AlcoholsForm = ({ data, setData }: IAlcoholsForm) => (
           width="25px"
           name="alcoholVolume"
           type="number"
-          value={element.alcoholVolume}
+          value={setNo0(element.alcoholVolume)}
           onChange={(e) => {
             setData([
               ...data.map((ele, mapindex) => {

@@ -5,6 +5,7 @@ import FormInput from 'components/atoms/formInput';
 import RemoveButton from 'components/atoms/removeRawButton';
 import styled from 'styled-components';
 import AddElementButton from 'components/atoms/addElementButton';
+import { setNo0 } from 'components/molecules/alcoholsForm/alcoholsForm';
 
 interface INoAlcoholsForm {
   data: NoAlcohols[];
@@ -27,16 +28,7 @@ const FormRaw = styled.div`
   margin: auto;
   text-align: revert;
   height: 30px;
-  /* flex-wrap: wrap; */
 `;
-
-// const FormRaw2 = styled.div`
-//   display: flex;
-//   margin: auto;
-//   text-align: revert;
-//   height: 30px;
-//   margin-bottom: 10px;
-// `;
 
 const emptyNoAlcohols: NoAlcohols = {
   noAlcoholType: '',
@@ -74,7 +66,7 @@ const AlcoholsForm = ({ data, setData }: INoAlcoholsForm) => (
             width="25px"
             name="noAlcoholVolume"
             type="number"
-            value={element.noAlcoholVolume}
+            value={setNo0(element.noAlcoholVolume)}
             onChange={(e) => {
               setData([
                 ...data.map((ele, mapindex) => {
