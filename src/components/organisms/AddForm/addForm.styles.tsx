@@ -5,10 +5,8 @@ const styledForm = styled.form`
   flex-direction: column;
   max-height: 85vh;
   width: 250px;
-  /* box-shadow: -1px 1px 2px rgba(0, 0, 0, 0.2); */
   padding: 10px;
   text-align: center;
-  /* justify-content: center; */
   overflow: auto;
   &::-webkit-scrollbar {
     width: 5px;

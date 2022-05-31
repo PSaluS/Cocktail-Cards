@@ -85,7 +85,8 @@ const ErrField = styled.div`
 
 const AddForm = () => {
   const [errState, setErrState] = useState<String[]>(['']);
-  const [buttText, setButtTest] = useState<String>('Send');
+  const [successState, setSuccessState] = useState<boolean>(false);
+  const [buttText, setButtTest] = useState<String | HTMLElement>('Send');
   const [formState, setformState] = useState<inicialValuesTypes>(inicialValues);
 
   const [addCocktail] = useMutation(ADD_COCKTAIL);
@@ -144,6 +145,7 @@ const AddForm = () => {
       <StyledForm
         onSubmit={async (e) => {
           e.preventDefault();
+          setSuccessState(false);
           e.currentTarget
             .getElementsByClassName('SubbButton')
             .item(0)
@@ -199,7 +201,7 @@ const AddForm = () => {
                     ...formState,
                     img: { ...formState.img, id: res.data.assets[0].id },
                   });
-                  addCocktail({
+                  const response = await addCocktail({
                     variables: {
                       title: formState.title,
                       elements: formState.elements,
@@ -210,7 +212,10 @@ const AddForm = () => {
                       author: formState.author,
                     },
                   });
-                  setformState(inicialValues);
+                  if (response.data !== undefined) {
+                    setSuccessState(true);
+                    setformState(inicialValues);
+                  }
                 }
               }
             }
@@ -220,7 +225,7 @@ const AddForm = () => {
           return null;
         }}
       >
-        {errState.length > 0 ? (
+        {!successState ? (
           <ErrField>
             {errState.map((element) => (
               <p>{element}</p>
@@ -314,7 +319,7 @@ const AddForm = () => {
         >
           {buttText}
         </SubbButton>
-        {errState.length > 0 ? (
+        {!successState ? (
           <ErrField>
             {errState.map((element) => (
               <p>{element}</p>

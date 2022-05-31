@@ -6,6 +6,7 @@ import emptyCocktail from 'API/Templates';
 import Cocktail from 'API/types';
 import CardsSpace from 'components/organisms/cardsSpace';
 import ContentCard from 'components/molecules/contentCard';
+import LoadIcon from 'components/atoms/loadIcon';
 
 const Main = styled.div`
   display: flex;
@@ -19,6 +20,10 @@ const Main = styled.div`
   right: 0px;
 `;
 
+// const LoadIconPosition = styled.div`
+//   margin: auto;
+//   transform: scale(0.5);
+// `;
 // const End = styled.div`
 //   width: 95%;
 //   margin: 5px 5px 2.5% 2.5%;
@@ -42,7 +47,7 @@ const cocktails = (): ReactElement => {
             setFocusCard(emptyCocktail);
           }}
         />
-        {loading ?? <p>loadring...</p>}
+        {loading ? <LoadIcon /> : null}
         {!error && !loading ? (
           <CardsSpace data={data.cocktailCardsID} setFocus={setFocusCard} isFocus={focusCard.id} />
         ) : null}
