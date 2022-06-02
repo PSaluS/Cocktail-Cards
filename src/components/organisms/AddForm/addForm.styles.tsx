@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import contentP from 'components/atoms/contentP';
 
 const styledForm = styled.form`
   display: flex;
@@ -20,6 +21,22 @@ const styledForm = styled.form`
 
 export const StyledCard = styled.div`
   width: 500px;
+  align-content: center;
+`;
+
+export const AddSpace = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  width: 100vw;
+  position: relative;
+`;
+
+export const SuccesField = styled(contentP)`
+  color: #00ff00;
+`;
+
+export const ErrField = styled(contentP)`
+  color: red;
 `;
 
 export default styledForm;

@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import styled from 'styled-components';
 import { useQuery, useMutation } from '@apollo/client';
 import { ADD_COCKTAIL, ID_QUERY } from 'API/GraphQL';
 import AddFormRow from 'components/atoms/addFormRow';
@@ -14,7 +13,7 @@ import AlkoholsForm from 'components/molecules/alcoholsForm';
 import NoAlkoholsForm from 'components/molecules/elementsForm';
 import Card from 'components/molecules/card';
 import ContentCard from 'components/molecules/contentCard';
-import StyledForm, { StyledCard } from './addForm.styles';
+import StyledForm, { StyledCard, AddSpace, SuccesField, ErrField } from './addForm.styles';
 
 interface inicialValuesTypes {
   title: string;
@@ -67,21 +66,6 @@ const ff = (data: File | null) => {
   }
   return null;
 };
-
-const AddSpace = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  width: 100vw;
-  position: relative;
-`;
-
-const SuccesField = styled.div`
-  color: #00ff00;
-`;
-
-const ErrField = styled.div`
-  color: red;
-`;
 
 const AddForm = () => {
   const [errState, setErrState] = useState<String[]>(['']);

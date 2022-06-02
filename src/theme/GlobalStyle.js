@@ -5,10 +5,10 @@ const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    background: white;
+    background-color: white;
     @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
     @import url('https://fonts.googleapis.com/css2?family=Yellowtail&display=swap');
-    @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap');
     font-family: 'Roboto', sans-serif;
   &::-webkit-scrollbar {
     width: 7px;
