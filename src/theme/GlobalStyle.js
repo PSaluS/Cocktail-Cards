@@ -12,7 +12,6 @@ const GlobalStyle = createGlobalStyle`
     font-family: 'Roboto', sans-serif;
   &::-webkit-scrollbar {
     width: 7px;
-    /* border: 1px solid rgba(0, 0, 0, 0.1); */
   }
   &::-webkit-scrollbar-thumb {
     width: 5px;

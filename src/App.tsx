@@ -1,7 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, NavLink, Switch, Route } from 'react-router-dom';
 import { ApolloProvider } from '@apollo/client';
-// import FlexSpace from 'components/organisms/cardsSpace/cardsSpace.styles';
 import Title from 'components/atoms/title';
 import apolloClient from 'API/apolloClient';
 import { GlobalStyle, Theme } from 'theme';

@@ -7,7 +7,7 @@ interface Ifocus {
 const FlexSpace = styled.div<Ifocus>`
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: space-evenly;
   transition: width 0.25s ease-in-out;
   width: ${({ focus }: Ifocus) =>
     focus === null || window.innerWidth <= 500

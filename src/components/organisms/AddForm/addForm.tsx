@@ -79,6 +79,43 @@ const AddForm = () => {
     skip: true,
   });
 
+  const validation = (): string[] => {
+    setErrState([]);
+    const errBuff = [];
+    let emptyAElement: boolean = false;
+    let emptyNElement: boolean = false;
+
+    formState.elements.alcohols.forEach((element) => {
+      if (element.alcoholType === '' || element.alcoholVolume <= 0) emptyAElement = true;
+    });
+    formState.elements.noAlcohols.forEach((element) => {
+      if (
+        element.noAlcoholType === '' ||
+        element.noAlcoholVolume <= 0 ||
+        element.noAlcoholUnit === ''
+      )
+        emptyNElement = true;
+    });
+
+    if (formState.title === '') errBuff.push('Cocktail must have name');
+
+    if (formState.title.length <= 3 || formState.title.length >= 30)
+      errBuff.push(`Cocktail's name length must be between 2 and 30 char`);
+
+    if (emptyAElement || emptyNElement)
+      errBuff.push('Ingredients incomplete, complete all elements before send Cocktail');
+
+    if (formState.elements.alcohols.length + formState.elements.noAlcohols.length < 2)
+      errBuff.push('Cocktail must have 2 elements');
+
+    if (formState.content === '') errBuff.push(`Instruction can't be empty`);
+
+    if (formState.author.length > 20) errBuff.push(`Author's name must be shorter than 20 char`);
+
+    if (formState.img.data === null) errBuff.push(`Cocktail must have an image`);
+    return errBuff;
+  };
+
   const cmmonSetState: React.ChangeEventHandler<
     HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
   > = (e) => {
@@ -135,40 +172,8 @@ const AddForm = () => {
             .item(0)
             ?.setAttribute('disabled', 'true');
           setButtTest('In progres...');
-          setErrState([]);
-          const errBuff = [];
-          let emptyAElement: boolean = false;
-          let emptyNElement: boolean = false;
 
-          formState.elements.alcohols.forEach((element) => {
-            if (element.alcoholType === '' || element.alcoholVolume <= 0) emptyAElement = true;
-          });
-          formState.elements.noAlcohols.forEach((element) => {
-            if (
-              element.noAlcoholType === '' ||
-              element.noAlcoholVolume <= 0 ||
-              element.noAlcoholUnit === ''
-            )
-              emptyNElement = true;
-          });
-
-          if (formState.title === '') errBuff.push('Cocktail must have name');
-
-          if (formState.title.length <= 3 || formState.title.length >= 30)
-            errBuff.push(`Cocktail's name length must be between 2 and 30 char`);
-
-          if (emptyAElement || emptyNElement)
-            errBuff.push('element incomplete, complete all elements before send Cocktail');
-
-          if (formState.elements.alcohols.length + formState.elements.noAlcohols.length < 2)
-            errBuff.push('Cocktail must have 2 elements');
-
-          if (formState.content === '') errBuff.push(`Instruction can't be empty`);
-
-          if (formState.author.length > 20)
-            errBuff.push(`Author's name must be shorter than 20 char`);
-
-          if (formState.img.data === null) errBuff.push(`Cocktail must have an image`);
+          const errBuff: string[] = validation();
 
           if (errBuff.length > 0) {
             setErrState([...errBuff]);
