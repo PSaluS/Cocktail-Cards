@@ -46,6 +46,7 @@ const AlcoholsForm = ({ data, setData }: IAlcoholsForm) => (
           width="120px"
           name="alcohloType"
           type="text"
+          maxLength={24}
           value={element.alcoholType}
           onChange={(e) => {
             setData([
@@ -72,8 +73,11 @@ const AlcoholsForm = ({ data, setData }: IAlcoholsForm) => (
                 if (mapindex !== index) {
                   return ele;
                 }
+                let fixed = Number(e.currentTarget.value);
+                if (fixed > 1000) fixed = 1000;
+                fixed = Number(fixed.toFixed(2));
                 return {
-                  alcoholVolume: Number(e.currentTarget.value),
+                  alcoholVolume: fixed,
                   alcoholType: data[index].alcoholType,
                 };
               }),

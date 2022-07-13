@@ -10,6 +10,7 @@ const GlobalStyle = createGlobalStyle`
     @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
     @import url('https://fonts.googleapis.com/css2?family=Yellowtail&display=swap');
     font-family: 'Roboto', sans-serif;
+  overflow-x: hidden;
   &::-webkit-scrollbar {
     width: 7px;
   }

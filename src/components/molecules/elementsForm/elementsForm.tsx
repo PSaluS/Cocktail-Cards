@@ -46,6 +46,7 @@ const AlcoholsForm = ({ data, setData }: INoAlcoholsForm) => (
             width="100px"
             name="noAlcohloType"
             type="text"
+            maxLength={24}
             value={element.noAlcoholType}
             onChange={(e) => {
               setData([
@@ -73,8 +74,11 @@ const AlcoholsForm = ({ data, setData }: INoAlcoholsForm) => (
                   if (mapindex !== index) {
                     return ele;
                   }
+                  let fixed = Number(e.currentTarget.value);
+                  if (fixed > 1000) fixed = 1000;
+                  fixed = Number(fixed.toFixed(2));
                   return {
-                    noAlcoholVolume: Number(e.currentTarget.value),
+                    noAlcoholVolume: fixed,
                     noAlcoholType: data[index].noAlcoholType,
                     noAlcoholUnit: data[index].noAlcoholUnit,
                   };
@@ -87,6 +91,7 @@ const AlcoholsForm = ({ data, setData }: INoAlcoholsForm) => (
             width="60px"
             name="noAlcohloUnit"
             type="text"
+            maxLength={15}
             value={element.noAlcoholUnit}
             onChange={(e) => {
               setData([

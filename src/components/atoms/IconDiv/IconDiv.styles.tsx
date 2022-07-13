@@ -58,6 +58,20 @@ const IconStyleDiv = styled.div`
   background-position: center;
   border-radius: 5px;
   mix-blend-mode: normal;
+  /* position: relative; */
+  /* :hover {
+    display: block;
+    font-size: 12px;
+    box-sizing: content-box;
+    align-content: center;
+    width: 100px;
+    position: absolute;
+    background-color: white;
+    content: 'to będzie bardzo długi test';
+    overflow: visible;
+    bottom: -20px;
+    z-index: 3;
+  } */
 `;
 
 const IconStyleCard = styled(IconStyleDiv)`

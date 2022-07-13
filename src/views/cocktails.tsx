@@ -14,30 +14,16 @@ const Main = styled.div`
   flex-wrap: nowrap;
   position: relative;
   justify-content: right;
-  width: 100%;
+  width: ${window.innerWidth}px;
   padding: 0;
   margin: 0;
   right: 0px;
 `;
 
-// const LoadIconPosition = styled.div`
-//   margin: auto;
-//   transform: scale(0.5);
-// `;
-// const End = styled.div`
-//   width: 95%;
-//   margin: 5px 5px 2.5% 2.5%;
-//   height: 0px;
-//   border: 1px solid rgba(0, 0, 0, 0.1);
-//   background-color: rgba(0, 0, 0, 0.1);
-//   border-radius: 2px;
-//   box-sizing: border-box;
-//   box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.5);
-// `;
-
 const cocktails = (): ReactElement => {
   const [focusCard, setFocusCard] = useState<Cocktail>(emptyCocktail);
   const { loading, error, data } = useQuery(QUERY);
+
   return (
     <>
       <Main>

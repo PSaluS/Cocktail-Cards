@@ -11,9 +11,10 @@ interface dataInter {
 
 const CardsSpace = ({ data, setFocus, isFocus }: dataInter): ReactElement => {
   if (data !== undefined) {
-    const cards: ReactElement[] = data.map((element: Cocktail) => (
-      <Card data={element} setFocus={setFocus} key={element.id} />
-    ));
+    const cards: ReactElement[] = data
+      .slice(0)
+      .reverse()
+      .map((element: Cocktail) => <Card data={element} setFocus={setFocus} key={element.id} />);
     return <FlexSpace focus={isFocus}>{cards}</FlexSpace>;
   }
   return (

@@ -12,11 +12,11 @@ const FlexSpace = styled.div<Ifocus>`
   width: ${({ focus }: Ifocus) =>
     focus === null || window.innerWidth <= 500
       ? `${window.innerWidth}px`
-      : `${window.innerWidth - 310}px`};
+      : `${window.innerWidth - 410}px`};
   position: relative;
   max-height: ${window.innerHeight - 85};
   height: ${window.innerHeight - 85};
-  overflow: auto;
+  overflow-y: auto;
 
   &::-webkit-scrollbar {
     width: 5px;
